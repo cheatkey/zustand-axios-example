@@ -1,10 +1,26 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App'
-import './index.css'
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import "./index.css";
+import ZustandAsyncExample from "./pages/ZustandAsyncExample";
 
-ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
+const router = createBrowserRouter([
+  {
+    path: "/zustand-intro",
+    // element: <p>hello</p>,
+    // loader: rootLoader,
+    children: [
+      {
+        path: "/zustand-intro/async",
+        element: <ZustandAsyncExample />,
+        // loader: teamLoader,
+      },
+    ],
+  },
+]);
+
+ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
-    <App />
+    <RouterProvider router={router} fallbackElement={<></>} />
   </React.StrictMode>
-)
+);
