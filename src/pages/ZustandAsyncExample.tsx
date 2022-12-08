@@ -12,11 +12,11 @@ const ZustandAsyncExample = ({}: IZustandAsyncExampleProps) => {
   return (
     <div className="flex flex-col items-center gap-4 pt-10">
       <a
-        href="#"
-        className="fixed bottom-3 flex flex-row gap-1 mb-7 items-center font-bold text-xl bg-zinc-100 text-zinc-800 py-5 px-10 rounded-xl hover:scale-105 cursor-pointer transition-transform"
+        href="http://localhost:3000/post/zustand-intro"
+        className="flex flex-row gap-1 mb-7 items-center font-bold text-xl bg-zinc-100 text-zinc-800 py-3 px-10 rounded-xl hover:scale-105 cursor-pointer transition-transform"
       >
         <Icon.Link />
-        zustand 사용법 포스트 바로가기
+        블로그 포스트 바로가기
       </a>
 
       <h1 className="font-bold text-3xl">zustand combine + async 예제</h1>
