@@ -1,3 +1,4 @@
+import Icon from "../components/icon";
 import useBear from "./hooks/useBear";
 
 interface IZustandAsyncExampleProps {}
@@ -5,23 +6,32 @@ interface IZustandAsyncExampleProps {}
 const ZustandAsyncExample = ({}: IZustandAsyncExampleProps) => {
   const todoList = useBear((state) => state.todoList);
   const isLoading = useBear((state) => state.isLoading);
-  const getNewTodoItem = useBear((state) => state.getNewTodoItem);
+  const loadNewItem = useBear((state) => state.loadNewItem);
+  const reset = useBear((state) => state.reset);
 
   return (
     <div className="flex flex-col items-center gap-4 pt-10">
-      <h1 className="font-bold text-3xl">Zustand Async 예제</h1>
-      <h2 className="font-medium text-xl">Todo item 불러오기</h2>
-
-      <p>{todoList.length}개의 작업을 가져왔습니다</p>
-
-      <button
-        onClick={getNewTodoItem}
-        className="w-[230px] flex justify-center"
+      <a
+        href="#"
+        className="flex flex-row gap-1 mb-7 items-center font-bold text-xl bg-zinc-100 text-zinc-800 py-5 px-10 rounded-xl hover:scale-105 cursor-pointer transition-transform"
       >
-        {isLoading ? <SpinnerIcon /> : "새로운 TODO item 불러오기"}
-      </button>
+        <Icon.Link />
+        zustand 사용법 포스트 바로가기
+      </a>
 
-      <div className="flex flex-col mt-4">
+      <h1 className="font-bold text-3xl">zustand combine + async 예제</h1>
+
+      <p>{todoList.length}개의 작업을 불러왔습니다.</p>
+
+      <div className="flex flex-row gap-4">
+        <button onClick={loadNewItem} className="w-[230px] flex justify-center">
+          {isLoading ? <SpinnerIcon /> : "새로운 TODO item 불러오기"}
+        </button>
+        <button onClick={reset}>reset</button>
+      </div>
+
+      <div className="flex flex-col mt-4 w-[30rem] gap-2">
+        <h2 className="font-medium text-xl">불러온 작업 목록</h2>
         {todoList.map((todoItem) => {
           return (
             <div key={todoItem.id} className="flex flex-row items-center gap-2">
