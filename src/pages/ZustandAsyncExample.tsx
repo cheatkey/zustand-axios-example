@@ -13,7 +13,7 @@ const ZustandAsyncExample = ({}: IZustandAsyncExampleProps) => {
     <div className="flex flex-col items-center gap-4 pt-10">
       <a
         href="#"
-        className="flex flex-row gap-1 mb-7 items-center font-bold text-xl bg-zinc-100 text-zinc-800 py-5 px-10 rounded-xl hover:scale-105 cursor-pointer transition-transform"
+        className="fixed bottom-3 flex flex-row gap-1 mb-7 items-center font-bold text-xl bg-zinc-100 text-zinc-800 py-5 px-10 rounded-xl hover:scale-105 cursor-pointer transition-transform"
       >
         <Icon.Link />
         zustand 사용법 포스트 바로가기
@@ -30,16 +30,21 @@ const ZustandAsyncExample = ({}: IZustandAsyncExampleProps) => {
         <button onClick={reset}>reset</button>
       </div>
 
-      <div className="flex flex-col mt-4 w-[30rem] gap-2">
+      <div className="flex flex-col mt-4 w-[30rem] ">
         <h2 className="font-medium text-xl">불러온 작업 목록</h2>
-        {todoList.map((todoItem) => {
-          return (
-            <div key={todoItem.id} className="flex flex-row items-center gap-2">
-              <CheckIcon completed={todoItem.completed} />
-              {todoItem.title}
-            </div>
-          );
-        })}
+        <div className="flex flex-col gap-2 h-72 overflow-auto">
+          {todoList.map((todoItem) => {
+            return (
+              <div
+                key={todoItem.id}
+                className="flex flex-row items-center gap-2"
+              >
+                <CheckIcon completed={todoItem.completed} />
+                {todoItem.title}
+              </div>
+            );
+          })}
+        </div>
       </div>
     </div>
   );
