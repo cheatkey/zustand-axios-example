@@ -1,4 +1,5 @@
 import Icon from "../components/icon";
+import isRenderInIframe from "../utils/isRenderInIframe";
 import useBear from "./hooks/useBear";
 
 interface IZustandAsyncExampleProps {}
@@ -9,15 +10,20 @@ const ZustandAsyncExample = ({}: IZustandAsyncExampleProps) => {
   const loadNewItem = useBear((state) => state.loadNewItem);
   const reset = useBear((state) => state.reset);
 
+  const isInIframe = window.location !== window.parent.location;
+  const showLink = isInIframe === false;
+
   return (
     <div className="flex flex-col items-center gap-4 pt-10">
-      <a
-        href="http://localhost:3000/post/zustand-intro"
-        className="flex flex-row gap-1 mb-7 items-center font-bold text-xl bg-zinc-100 text-zinc-800 py-3 px-10 rounded-xl hover:scale-105 cursor-pointer transition-transform"
-      >
-        <Icon.Link />
-        블로그 포스트 바로가기
-      </a>
+      {showLink && (
+        <a
+          href="http://localhost:3000/post/zustand-intro"
+          className="flex flex-row gap-1 mb-7 items-center font-bold text-xl bg-zinc-100 text-zinc-800 py-3 px-10 rounded-xl hover:scale-105 cursor-pointer transition-transform"
+        >
+          <Icon.Link />
+          블로그 포스트 바로가기
+        </a>
+      )}
 
       <h1 className="font-bold text-3xl">zustand combine + async 예제</h1>
 
