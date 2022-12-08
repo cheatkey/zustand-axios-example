@@ -37,7 +37,7 @@ const ZustandAsyncExample = ({}: IZustandAsyncExampleProps) => {
       </div>
 
       <div className="flex flex-col mt-4 w-[30rem] ">
-        <h2 className="font-medium text-xl">불러온 작업 목록</h2>
+        <h2 className="font-medium text-xl mb-2">불러온 작업 목록</h2>
         <div className="flex flex-col gap-2 h-72 overflow-auto">
           {todoList.map((todoItem) => {
             return (
